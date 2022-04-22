@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <link rel="stylesheet stylesheet" href="/assets/css/login.css" />
+
+</head>
+<body>
+
+<div class="form-structor">
+    <div class="signup">
+        <h2 class="form-title" id="signup"><span>或</span>注册</h2>
+
+        <div class="form-holder">
+            <input type="text" id="username" class="form-control" placeholder="用户名" />
+            <input type="text"id="email" class="form-control" placeholder="邮箱" />
+            <input type="text" id="password" class="form-control" placeholder="密码" />
+        </div>
+        <button class="submit-btn">注册</button>
+    </div>
+    <div class="login slide-up">
+        <div class="center">
+            <h2 class="form-title" id="login"><span>或</span>登录</h2>
+            <form th:action="@{/sercurity/login}" method="post" th:object="${user}">
+            <div class="form-holder">
+                <input type="text" id="email2" class="form-control" placeholder="邮箱" />
+                <input type="text" id="password2" class="form-control" placeholder="密码" />
+            </div>
+            <button class="submit-btn">登录</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/script.js"></script>
+
+</body>
+</html>

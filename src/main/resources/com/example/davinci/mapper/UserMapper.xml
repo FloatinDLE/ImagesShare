@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org.//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.davinci.mapper.UserMapper">
+    <sql id="cols">user_no,user_name,user_email,user_pwd</sql>
+    <resultMap id="userRM" type="com.example.davinci.entity.User">
+        <id property="userNo" column="user_no"/>
+        <result property="userName" column="user_name"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userPwd" column="user_pwd"/>
+    </resultMap>
+    <insert id="addUser" parameterType="com.example.davinci.entity.User">
+        insert into t_users
+        (<include refid="cols"/> )
+        values
+        (#{userNo},#{userName},#{userEmail},#{userPwd})
+    </insert>
+    <select id="loadUserByEmail" parameterType="string" resultType="com.example.davinci.entity.User" resultMap="userRM">
+        select * from t_users
+        where user_email=#{userEmail}
+    </select>
+</mapper>
